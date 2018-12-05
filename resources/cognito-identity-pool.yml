@@ -10,9 +10,9 @@ Resources:
       # Link to our User Pool
       CognitoIdentityProviders:
         - ClientId:
-          Ref: CognitoUserPoolClient
-        ProviderName:
-          Fn::GetAtt: [ "CognitoUserPool", "ProviderName" ]
+            Ref: CognitoUserPoolClient
+          ProviderName:
+            Fn::GetAtt: [ "CognitoUserPool", "ProviderName" ]
 
   # IAM roles
   CognitoIdentityPoolRoles:
@@ -33,16 +33,16 @@ Resources:
         Version: '2012-10-17'
         Statement:
           - Effect: 'Allow'
-          Principal:
-            Federated: 'cognito-identity.amazonaws.com'
-          Action:
-            - 'sts:AssumeRoleWithWebIdentity'
-          Condition:
-            StringEquals:
-              'cognito-identity.amazonaws.com:aud':
-              Ref: CognitoIdentityPool
-            'ForAnyValue:StringLike':
-              'cognito-identity.amazonaws.com:amr': authenticated
+            Principal:
+              Federated: 'cognito-identity.amazonaws.com'
+            Action:
+              - 'sts:AssumeRoleWithWebIdentity'
+            Condition:
+              StringEquals:
+                'cognito-identity.amazonaws.com:aud':
+                Ref: CognitoIdentityPool
+              'ForAnyValue:StringLike':
+                'cognito-identity.amazonaws.com:amr': authenticated
 
       Policies:
         - PolicyName: 'CognitoAuthorizedPolicy'
