@@ -17,8 +17,7 @@ custom:
   tableThroughputs:
     prod: 5
     default: 1
-  tableThroughput: ${self:custom.tableThroughputs.${self:custom.stage},
-                  self:custom.tableThroughputs.default}
+  tableThroughput: ${self:custom.tableThroughputs.${self:custom.stage}, self:custom.tableThroughputs.default}
   # Load our webpack config
   webpack:
     webpackConfig: ./webpack.config.js
@@ -34,6 +33,8 @@ provider:
   # under process.env.
   environment:
     tableName: ${self:custom.tableName}
+    #tableName:
+    #  Ref: NotesTable    
 
   # 'iamRoleStatement' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.

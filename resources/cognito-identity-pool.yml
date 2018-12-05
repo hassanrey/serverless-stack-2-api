@@ -40,10 +40,9 @@ Resources:
             Condition:
               StringEquals:
                 'cognito-identity.amazonaws.com:aud':
-                Ref: CognitoIdentityPool
+                  Ref: CognitoIdentityPool
               'ForAnyValue:StringLike':
                 'cognito-identity.amazonaws.com:amr': authenticated
-
       Policies:
         - PolicyName: 'CognitoAuthorizedPolicy'
           PolicyDocument:
@@ -85,7 +84,6 @@ Resources:
                       - '/private/'
                       - '$'
                       - '{cognito-identity.amazonaws.com:sub}/*'
-
 
 # Print out the Id of the Identity Pool that is created
 Outputs:
